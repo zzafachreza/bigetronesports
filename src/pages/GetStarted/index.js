@@ -60,17 +60,6 @@ export default function GetStarted({navigation}) {
         />
       </View>
 
-      <Text
-        style={{
-          marginBottom: windowHeight / 5,
-          fontFamily: fonts.secondary[600],
-          fontSize: windowWidth / 18,
-          color: colors.white,
-          textAlign: 'center',
-        }}>
-        Kumpulkan Poinnya dan Dapatkan Hadiahnya
-      </Text>
-
       <MyButton
         borderSize={1}
         borderColor={colors.white}
@@ -82,11 +71,11 @@ export default function GetStarted({navigation}) {
 
       <MyGap jarak={20} />
       <MyButton
-        title="REGISTER"
+        title="SIGN UP"
         Icons="book"
-        warna={colors.white}
-        iconColor={colors.primary}
-        colorText={colors.primary}
+        warna={colors.secondary}
+        iconColor={colors.white}
+        colorText={colors.white}
         onPress={() => navigation.navigate('Register')}
       />
 

@@ -34,6 +34,14 @@ import {
   Bayar2,
   Search2,
   Laporan,
+  Schedule,
+  Results,
+  Artikel,
+  ScheduleDetail,
+  ResultsDetail,
+  Player,
+  PlayerDetail,
+  EditProfile,
 } from '../pages';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {BottomNavigator} from '../components';
@@ -46,10 +54,10 @@ const MainApp = () => {
   return (
     <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Transaksi" component={ListData} />
+      <Tab.Screen name="Schedule" component={Schedule} />
       {/* <Tab.Screen name="Cart" component={Cart} /> */}
       {/* <Tab.Screen name="Notifikasi" component={Notifikasi} /> */}
-      <Tab.Screen name="Account" component={Account} />
+      <Tab.Screen name="Results" component={Results} />
     </Tab.Navigator>
   );
 };
@@ -73,6 +81,22 @@ export default function Router() {
       />
 
       <Stack.Screen
+        name="Schedule"
+        component={Schedule}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
+        name="Results"
+        component={Results}
+        options={{
+          headerShown: false,
+        }}
+      />
+
+      <Stack.Screen
         name="ListData"
         component={ListData}
         options={{
@@ -80,12 +104,121 @@ export default function Router() {
         }}
       />
       <Stack.Screen
-        name="Pemakaian"
-        component={Pemakaian}
+        name="ScheduleDetail"
+        component={ScheduleDetail}
+        options={({route, navigation}) => ({
+          title: 'Menu1',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+          cardStyleInterpolator: ({current, layouts}) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        })}
+      />
+
+      <Stack.Screen
+        name="Player"
+        component={Player}
+        options={({route, navigation}) => ({
+          title: 'Menu1',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+          cardStyleInterpolator: ({current, layouts}) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        })}
+      />
+
+      <Stack.Screen
+        name="PlayerDetail"
+        component={PlayerDetail}
+        options={({route, navigation}) => ({
+          title: 'Menu1',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+          cardStyleInterpolator: ({current, layouts}) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        })}
+      />
+
+      <Stack.Screen
+        name="EditProfile"
+        component={EditProfile}
+        options={({route, navigation}) => ({
+          title: 'Menu1',
+          headerTintColor: 'white',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+          cardStyleInterpolator: ({current, layouts}) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        })}
+      />
+
+      <Stack.Screen
+        name="ResultsDetail"
+        component={ResultsDetail}
         options={{
           headerShown: false,
         }}
       />
+
       <Stack.Screen
         name="PemakaianTambah"
         component={PemakaianTambah}
@@ -140,6 +273,35 @@ export default function Router() {
           },
         }}
       />
+
+      <Stack.Screen
+        name="Artikel"
+        component={Artikel}
+        options={{
+          headerTintColor: 'white',
+          headerTitle: 'News',
+          headerStyle: {
+            backgroundColor: colors.primary,
+            elevation: 0, // remove shadow on Android
+          },
+
+          cardStyleInterpolator: ({current, layouts}) => {
+            return {
+              cardStyle: {
+                transform: [
+                  {
+                    translateX: current.progress.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [layouts.screen.width, 0],
+                    }),
+                  },
+                ],
+              },
+            };
+          },
+        }}
+      />
+
       <Stack.Screen
         name="Register"
         component={Register}

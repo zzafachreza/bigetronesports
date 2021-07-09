@@ -55,10 +55,10 @@ export default function BottomNavigator({state, descriptors, navigation}) {
           iconName = 'home';
         } else if (label === 'Account') {
           iconName = 'person';
-        } else if (label === 'Transaksi') {
-          iconName = 'list';
-        } else if (label === 'Notifikasi') {
-          iconName = 'notifications';
+        } else if (label === 'Schedule') {
+          iconName = 'calendar';
+        } else if (label === 'Results') {
+          iconName = 'checkmark-circle';
         } else if (label === 'Cart') {
           iconName = 'cart';
         }

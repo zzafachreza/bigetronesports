@@ -16,55 +16,48 @@ import {fonts} from '../../utils/fonts';
 import 'intl';
 import 'intl/locale-data/jsonp/en';
 
-export default function MyTerbaik() {
+export default function MySchedule() {
   useEffect(() => {
-    axios
-      .get('https://zavalabs.com/bigetronesports/api/artikel_get.php')
-      .then(res => {
-        console.log(res.data);
-        setData(res.data);
-        // setData(res.data.data);
-      });
+    // axios
+    //   .get('https://zavalabs.com/bigetronesports/api/artikel_get.php')
+    //   .then(res => {
+    //     console.log(res.data);
+    //     setData(res.data);
+    //     // setData(res.data.data);
+    //   });
   }, []);
 
   const navigation = useNavigation();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+      id: 0,
+      image: require('../../assets/pubg.png'),
+      game: 'PUBG MOBILE',
+    },
+    {
+      id: 1,
+      image: require('../../assets/ml.png'),
+      game: 'MOBILE LEGEND BANG-BANG',
+    },
+    {
+      id: 2,
+      image: require('../../assets/ff.png'),
+      game: 'FREE FIRE',
+    },
+    {
+      id: 3,
+      image: require('../../assets/cod.png'),
+      game: 'COD MOBILE',
+    },
+  ]);
 
   const renderItem = ({item}) => {
     return (
       <TouchableOpacity
         style={styles.card}
-        onPress={() => navigation.navigate('Artikel', item)}
+        onPress={() => navigation.navigate('ScheduleDetail', item)}
         activeOpacity={1.0}>
-        <Image style={styles.image} source={{uri: item.image}} />
-
-        <View style={styles.detailsContainer}>
-          <View
-            style={{
-              flex: 1,
-            }}>
-            <Text style={styles.title}>{item.judul}</Text>
-          </View>
-        </View>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'flex-end',
-            justifyContent: 'flex-end',
-          }}>
-          <Text
-            style={{
-              fontFamily: fonts.secondary[600],
-              fontSize: 14,
-              padding: 3,
-              backgroundColor: colors.primary,
-              borderTopLeftRadius: 20,
-              paddingHorizontal: 20,
-              color: colors.white,
-            }}>
-            {item.tanggal}
-          </Text>
-        </View>
+        <Image style={styles.image} source={item.image} />
       </TouchableOpacity>
     );
   };
@@ -88,7 +81,7 @@ export default function MyTerbaik() {
           }}>
           <Icon
             type="ionicon"
-            name="newspaper"
+            name="calendar-outline"
             color={colors.primary}
             size={20}
           />
@@ -100,7 +93,7 @@ export default function MyTerbaik() {
               left: 10,
               fontSize: 20,
             }}>
-            Latest News
+            SCHEDULE
           </Text>
           <Image
             source={require('../../assets/logo.png')}

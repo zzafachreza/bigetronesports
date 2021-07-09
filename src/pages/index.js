@@ -23,7 +23,15 @@ import PemakaianTambah from './PemakaianTambah';
 import BarangPemakaian from './BarangPemakaian';
 import Akses from './Akses';
 import Laporan from './Laporan';
+import Schedule from './Schedule';
+import Results from './Results';
+import ScheduleDetail from './ScheduleDetail';
+import ResultsDetail from './ResultsDetail';
 
+import Artikel from './Artikel';
+import Player from './Player';
+import PlayerDetail from './PlayerDetail';
+import EditProfile from './EditProfile';
 export {
   Splash,
   GetStarted,
@@ -50,4 +58,12 @@ export {
   BarangPemakaian,
   Akses,
   Laporan,
+  Schedule,
+  Results,
+  Artikel,
+  ScheduleDetail,
+  ResultsDetail,
+  Player,
+  PlayerDetail,
+  EditProfile,
 };

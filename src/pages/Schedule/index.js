@@ -17,13 +17,14 @@ import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
 import {getData, storeData} from '../../utils/localStorage';
 import {Icon} from 'react-native-elements';
-import MyDrawer from '../../components/MyDrawer';
-import MyTerbaik from '../../components/MyTerbaik';
+import MyCarouser from '../../components/MyCarouser';
+import MySchedule from '../../components/MySchedule';
 import axios from 'axios';
 import Drawer from 'react-native-drawer';
 import {MyButton} from '../../components';
+import MyDrawer from '../../components/MyDrawer';
 
-export default function Home({navigation}) {
+export default function Schdule({navigation}) {
   const _drawer = useRef();
 
   const handleLogout = () => {
@@ -141,7 +142,7 @@ export default function Home({navigation}) {
             </TouchableOpacity>
           </View>
 
-          <MyTerbaik />
+          <MySchedule />
         </ScrollView>
       </ImageBackground>
     </Drawer>

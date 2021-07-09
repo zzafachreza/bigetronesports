@@ -63,28 +63,33 @@ export default function Splash({navigation}) {
           source={require('../..//assets/logo.png')}
           style={{
             resizeMode: 'contain',
+            width: 150,
+            height: 150,
             aspectRatio: scaleLogo,
+            marginBottom: 120,
           }}
         />
         <Animated.View
           style={{
             top: scaleText,
+            justifyContent: 'center',
+            alignItems: 'center',
           }}>
           <Text
             style={{
               fontFamily: fonts.secondary[800],
-              fontSize: windowWidth / 7,
-              color: colors.white,
+              fontSize: windowWidth / 11,
+              color: colors.primary,
             }}>
-            WANDHA
+            Bigetron Esports
           </Text>
           <Text
             style={{
               fontFamily: fonts.secondary[600],
-              fontSize: windowWidth / 9,
+              fontSize: windowWidth / 15,
               color: colors.secondary,
             }}>
-            ELEKTRONIK
+            Programmed To Win
           </Text>
         </Animated.View>
       </View>
@@ -94,7 +99,7 @@ export default function Splash({navigation}) {
 
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.white,
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,

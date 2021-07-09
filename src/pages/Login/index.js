@@ -71,34 +71,31 @@ export default function Login({navigation}) {
         style={{
           flex: 1,
         }}>
-        <View style={{height: 250, flex: 1}}>
-          <LottieView
+        <View
+          style={{
+            height: 250,
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          {/* <LottieView
             style={{flex: 1}}
             source={require('../../assets/getstarted.json')}
             autoPlay
             loop
+          /> */}
+
+          <Image
+            source={require('../../assets/logo.png')}
+            style={{
+              resizeMode: 'contain',
+              width: 100,
+              height: 100,
+              aspectRatio: 1,
+            }}
           />
         </View>
         <View style={styles.page}>
-          <Text
-            style={{
-              fontFamily: fonts.secondary[400],
-              fontSize: windowWidth / 20,
-              color: colors.black,
-              // maxWidth: 230,
-            }}>
-            Silahkan login untuk masuk ke aplikasi{' '}
-            <Text
-              style={{
-                fontFamily: fonts.secondary[600],
-                fontSize: windowWidth / 20,
-                color: colors.black,
-                // maxWidth: 230,
-              }}>
-              Wandha Elektronik
-            </Text>
-          </Text>
-
           <MyGap jarak={20} />
           <MyInput
             label="Email"

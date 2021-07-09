@@ -1,6 +1,6 @@
 export const colors = {
-  primary: '#112340',
-  secondary: '#56CCF2',
+  primary: '#ED182D',
+  secondary: '#2A3056',
   tertiary: '#fe3a9e',
   background: '#6B63FF',
   success: '#198754',
@@ -8,5 +8,5 @@ export const colors = {
   danger: '#dc3545',
   black: 'black',
   white: 'white',
-  border: '#dedede',
+  border: '#DAD3D3',
 };
