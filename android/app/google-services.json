@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "357147762266",
+    "project_id": "bigetron-esports",
+    "storage_bucket": "bigetron-esports.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357147762266:android:8092984145304c7b000263",
+        "android_client_info": {
+          "package_name": "com.bigetronesports"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357147762266-v0hddj3ja1fp6oetcr2emihpppb618f9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtb2IWy3JwwK9qUOLArIpPlnUgjsTnucQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357147762266-v0hddj3ja1fp6oetcr2emihpppb618f9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
