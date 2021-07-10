@@ -7,7 +7,8 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import WebView from 'react-native-webview';
-import {getData} from '../../utils';
+import {getData} from '../../utils/localStorage';
+import {colors} from '../../utils/colors';
 
 export default function Artikel({navigation, route}) {
   const [visible, setVisible] = useState(true);
@@ -48,7 +49,7 @@ export default function Artikel({navigation, route}) {
             opacity: 0.7,
             height: '100%',
           }}>
-          <ActivityIndicator color="#16A858" size="large" />
+          <ActivityIndicator color={colors.primary} size="large" />
         </View>
       )}
     </SafeAreaView>

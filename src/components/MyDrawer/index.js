@@ -106,12 +106,27 @@ export default function MyDrawer({closeDrawer}) {
         }}>
         <View
           style={{
-            width: 100,
-            backgroundColor: colors.border,
-            height: 100,
-            borderRadius: 50,
+            width: 120,
+            // backgroundColor: colors.border,
+            borderWidth: 2,
+            borderColor: colors.primary,
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: 120,
+            borderRadius: 60,
             marginBottom: 10,
-          }}></View>
+            overflow: 'hidden',
+          }}>
+          <Image
+            source={{
+              uri:
+                user.foto == ''
+                  ? 'https://ayokulakan.com/img/no-images.png'
+                  : user.foto,
+            }}
+            style={{width: 120, height: 120}}
+          />
+        </View>
         <Text
           style={{
             fontFamily: fonts.secondary[600],
@@ -120,9 +135,17 @@ export default function MyDrawer({closeDrawer}) {
           }}>
           {user.nama_lengkap}
         </Text>
+        <Text
+          style={{
+            fontFamily: fonts.secondary[400],
+            fontSize: windowWidth / 28,
+            color: colors.black,
+          }}>
+          {user.bio}
+        </Text>
       </View>
       <MyButton
-        onPress={() => navigation.navigate('EditProfile')}
+        onPress={() => navigation.navigate('EditProfile', user)}
         title="Edit Profile"
         warna={colors.border}
         colorText={colors.secondary}
@@ -204,27 +227,9 @@ export default function MyDrawer({closeDrawer}) {
             FREE FIRE
           </Text>
         </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Player', {
-              game: 'COD MOBILE',
-            })
-          }
-          style={{
-            marginVertical: 5,
-          }}>
-          <Text
-            style={{
-              fontFamily: fonts.secondary[600],
-              fontSize: windowWidth / 28,
-              color: colors.primary,
-            }}>
-            COD MOBILE
-          </Text>
-        </TouchableOpacity>
       </View>
       <TouchableOpacity
+        onPress={() => navigation.replace('MainApp')}
         style={{
           marginVertical: 5,
         }}>
@@ -262,10 +267,8 @@ export default function MyDrawer({closeDrawer}) {
           justifyContent: 'space-around',
         }}>
         <TouchableOpacity
-          style={
-            {
-              // flex: 1,
-            }
+          onPress={() =>
+            Linking.openURL('https://www.facebook.com/bigetronesports')
           }>
           <Icon
             size={50}
@@ -275,10 +278,8 @@ export default function MyDrawer({closeDrawer}) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          style={
-            {
-              // flex: 1,
-            }
+          onPress={() =>
+            Linking.openURL('https://www.instagram.com/bigetronesports/')
           }>
           <Icon
             size={50}
@@ -288,10 +289,10 @@ export default function MyDrawer({closeDrawer}) {
           />
         </TouchableOpacity>
         <TouchableOpacity
-          style={
-            {
-              // flex: 1,
-            }
+          onPress={() =>
+            Linking.openURL(
+              'https://www.youtube.com/channel/UC6ZnM9vJ7OFVVvzOACDkfGg',
+            )
           }>
           <Icon
             size={50}

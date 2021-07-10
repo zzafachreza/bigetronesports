@@ -5,14 +5,16 @@ import {
   View,
   ImageBackground,
   SafeAreaView,
+  Image,
+  FlatList,
+  TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   Avatar,
   Accessory,
   Divider,
   ListItem,
-  // Icon,
+  Icon,
   Button,
 } from 'react-native-elements';
 import {storeData, getData} from '../../utils/localStorage';
@@ -20,18 +22,66 @@ import {colors} from '../../utils/colors';
 import {fonts} from '../../utils/fonts';
 import {MyGap} from '../../components';
 import * as Progress from 'react-native-progress';
+import axios from 'axios';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export default function PlayerDetail({navigation, route}) {
   const item = route.params;
+  console.log('detail player', item);
   const [user, setUser] = useState({});
   const [iLogo, setiLogo] = useState('');
+  const [data, setData] = useState([]);
 
   navigation.setOptions({
     title: 'PROFILE PLAYER',
   });
 
+  useEffect(() => {
+    axios
+      .post('https://zavalabs.com/bigetronesports/api/prestasi.php', {
+        id: item.id,
+      })
+      .then(res => {
+        console.log('data prestasi indvu', res.data);
+        setData(res.data);
+      });
+  }, []);
+
+  const __renderItem = ({item}) => {
+    return (
+      <TouchableOpacity
+        style={{
+          marginVertical: 10,
+
+          borderWidth: 1,
+          borderColor: colors.primary,
+
+          borderRadius: 10,
+        }}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            padding: 10,
+          }}>
+          <View>
+            <Icon type="ionicon" name="trophy" color={colors.warning} />
+          </View>
+          <View style={{paddingLeft: 10, flex: 1}}>
+            <Text
+              style={{
+                fontFamily: fonts.secondary[600],
+              }}>
+              {item.turnamen}
+            </Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+  };
   return (
-    <SafeAreaView style={{flex: 1, padding: 10}}>
+    <ScrollView style={{flex: 1, padding: 10}}>
       <View
         style={{
           // backgroundColor: 'yellow',
@@ -40,14 +90,25 @@ export default function PlayerDetail({navigation, route}) {
         }}>
         <View
           style={{
-            // borderWidth: 1,
-            backgroundColor: colors.secondary,
-            width: 100,
-            height: 100,
+            borderWidth: 2,
+            borderColor: colors.primary,
+
+            // backgroundColor: colors.secondary,
+            width: 200,
+            height: 200,
             justifyContent: 'center',
             alignItems: 'center',
-            borderRadius: 50,
-          }}></View>
+            borderRadius: 100,
+            overflow: 'hidden',
+          }}>
+          <Image
+            source={{uri: item.foto}}
+            style={{
+              width: 200,
+              height: 200,
+            }}
+          />
+        </View>
         <Text
           style={{
             fontSize: 20,
@@ -99,7 +160,7 @@ export default function PlayerDetail({navigation, route}) {
             fontFamily: fonts.secondary[400],
             color: colors.primary,
           }}>
-          Wanita
+          {item.gender}
         </Text>
       </View>
 
@@ -121,7 +182,7 @@ export default function PlayerDetail({navigation, route}) {
             fontFamily: fonts.secondary[400],
             color: colors.primary,
           }}>
-          21 March 2000
+          {item.tanggal_lahir}
         </Text>
       </View>
 
@@ -143,7 +204,7 @@ export default function PlayerDetail({navigation, route}) {
             fontFamily: fonts.secondary[400],
             color: colors.primary,
           }}>
-          Rusher
+          {item.role}
         </Text>
       </View>
 
@@ -159,9 +220,13 @@ export default function PlayerDetail({navigation, route}) {
             fontFamily: fonts.secondary[600],
             marginBottom: 10,
           }}>
-          Comunication (75%)
+          Comunication ({item.komunikasi}%)
         </Text>
-        <Progress.Bar progress={0.75} width={300} color={colors.success} />
+        <Progress.Bar
+          progress={item.komunikasi / 100}
+          width={300}
+          color={colors.success}
+        />
       </View>
       <View
         style={{
@@ -175,9 +240,13 @@ export default function PlayerDetail({navigation, route}) {
             fontFamily: fonts.secondary[600],
             marginBottom: 10,
           }}>
-          Mentality (85%)
+          Mentality ({item.mental}%)
         </Text>
-        <Progress.Bar progress={0.85} width={300} color={colors.secondary} />
+        <Progress.Bar
+          progress={item.mental / 100}
+          width={300}
+          color={colors.secondary}
+        />
       </View>
       <View
         style={{
@@ -191,11 +260,35 @@ export default function PlayerDetail({navigation, route}) {
             fontFamily: fonts.secondary[600],
             marginBottom: 10,
           }}>
-          Skill Individual (95%)
+          Skill Individual ({item.individu}%)
         </Text>
-        <Progress.Bar progress={0.95} width={300} color={colors.primary} />
+        <Progress.Bar
+          progress={item.individu / 100}
+          width={300}
+          color={colors.primary}
+        />
       </View>
-    </SafeAreaView>
+
+      <View
+        style={{
+          marginBottom: 5,
+          padding: 10,
+          backgroundColor: colors.white,
+          borderRadius: 10,
+        }}>
+        <Text
+          style={{
+            fontFamily: fonts.secondary[600],
+            marginBottom: 10,
+            color: colors.primary,
+          }}>
+          Achievement Individual
+        </Text>
+
+        <FlatList data={data} renderItem={__renderItem} />
+      </View>
+      <MyGap jarak={30} />
+    </ScrollView>
   );
 }
 

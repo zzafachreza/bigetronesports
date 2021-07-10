@@ -73,9 +73,9 @@ export default function GetStarted({navigation}) {
       <MyButton
         title="SIGN UP"
         Icons="book"
-        warna={colors.secondary}
-        iconColor={colors.white}
-        colorText={colors.white}
+        warna={colors.white}
+        iconColor={colors.primary}
+        colorText={colors.primary}
         onPress={() => navigation.navigate('Register')}
       />
 

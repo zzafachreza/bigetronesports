@@ -18,40 +18,45 @@ import 'intl/locale-data/jsonp/en';
 
 export default function MyResults() {
   useEffect(() => {
-    axios
-      .get('https://zavalabs.com/bigetronesports/api/turnamen.php')
-      .then(res => {
-        console.log(res.data);
-        setData(res.data);
-        // setData(res.data.data);
-      });
+    // axios
+    //   .get('https://zavalabs.com/bigetronesports/api/artikel_get.php')
+    //   .then(res => {
+    //     console.log(res.data);
+    //     setData(res.data);
+    //     // setData(res.data.data);
+    //   });
   }, []);
 
   const navigation = useNavigation();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([
+    {
+      tanggal: '01 Januari 2020',
+      urutan: '2rd',
+      turnamen: 'Turnamet 1',
+    },
+    {
+      tanggal: '10 Januari 2020',
+      urutan: '1st',
+      turnamen: 'Turnamet 2',
+    },
+    {
+      tanggal: '29 Januari 2020',
+      urutan: '29th',
+      turnamen: 'Turnamet 3',
+    },
+  ]);
 
   const renderItem = ({item}) => {
     return (
       <View
         style={{
-          marginVertical: 5,
+          marginVertical: 10,
 
           borderWidth: 1,
           borderColor: colors.primary,
 
           borderRadius: 10,
-          overflow: 'hidden',
         }}>
-        <Text
-          style={{
-            fontFamily: fonts.secondary[600],
-            color: colors.white,
-            textAlign: 'center',
-            backgroundColor: colors.primary,
-            fontSize: 16,
-          }}>
-          {item.tier}
-        </Text>
         <View
           style={{
             flex: 1,
@@ -59,24 +64,8 @@ export default function MyResults() {
             alignItems: 'center',
             padding: 10,
           }}>
-          <View>
-            <Icon type="ionicon" name="trophy-outline" color={colors.black} />
-          </View>
-          <View
-            style={{
-              padding: 10,
-              flex: 1,
-            }}>
-            <Text
-              style={{
-                fontFamily: fonts.secondary[600],
-                fontSize: 16,
-                color: colors.success,
-              }}>
-              {item.posisi}
-            </Text>
-          </View>
-          <View style={{flex: 8, paddingLeft: 10}}>
+          <Icon type="ionicon" name="trophy-outline" color={colors.primary} />
+          <View style={{paddingLeft: 10}}>
             <Text
               style={{
                 fontFamily: fonts.secondary[600],
@@ -91,6 +80,25 @@ export default function MyResults() {
               {item.tanggal}
             </Text>
           </View>
+        </View>
+        <View
+          style={{
+            // flex: 1,
+            padding: 10,
+            backgroundColor: colors.primary,
+            alignItems: 'flex-end',
+            justifyContent: 'flex-end',
+            borderBottomRightRadius: 10,
+            borderBottomStartRadius: 10,
+          }}>
+          <Text
+            style={{
+              fontFamily: fonts.secondary[600],
+              color: colors.white,
+              fontSize: 16,
+            }}>
+            {item.urutan}
+          </Text>
         </View>
       </View>
     );
@@ -127,7 +135,7 @@ export default function MyResults() {
               left: 10,
               fontSize: 20,
             }}>
-            TURNAMENT RESULTS
+            TURNAMEN RESULTS
           </Text>
           <Image
             source={require('../../assets/logo.png')}

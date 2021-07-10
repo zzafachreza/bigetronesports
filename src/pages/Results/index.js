@@ -32,19 +32,6 @@ export default function Results({navigation}) {
     navigation.replace('GetStarted');
   };
 
-  const images = [
-    {
-      image:
-        'https://images.bisnis-cdn.com/posts/2019/09/27/1153079/rruk-dynamix2.jpg',
-    },
-    {
-      image: 'https://kipmi.or.id/wp-content/uploads/2017/01/molen-kecil.jpg',
-    },
-    {
-      image: 'https://kipmi.or.id/wp-content/uploads/2016/11/beton8.jpg',
-    },
-  ];
-
   const [user, setUser] = useState([]);
   const [token, setToken] = useState('');
 
@@ -58,7 +45,7 @@ export default function Results({navigation}) {
       });
     });
     axios
-      .post('https://zavalabs.com/pembantuku/api/update_token.php', {
+      .post('https://zavalabs.com/bigetronesports/api/update_token.php', {
         id_member: user.id,
         token: token,
       })

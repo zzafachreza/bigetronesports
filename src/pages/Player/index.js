@@ -33,33 +33,17 @@ export default function Player({navigation, route}) {
     title: item.game,
   });
 
-  const [data, setData] = useState([
-    {
-      nama: 'Nabila Rahmarizarti Maharani',
-      gender: 'Wanita',
-      tanggal_lahir: '1 Oktober 2001',
-    },
-    {
-      nama: 'Dani Maulana',
-      gender: 'Pria',
-      tanggal_lahir: '1 Oktober 2001',
-    },
-    {
-      nama: 'Dadan Mulyana',
-      gender: 'Pria',
-      tanggal_lahir: '1 Oktober 2001',
-    },
-  ]);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    // axios
-    //   .post('https://zavalabs.com/bigetronesports/api/jadwal.php', {
-    //     game: item.game,
-    //   })
-    //   .then(res => {
-    //     console.log(res.data);
-    //     setData(res.data);
-    //   });
+    axios
+      .post('https://zavalabs.com/bigetronesports/api/player.php', {
+        key: item.game,
+      })
+      .then(res => {
+        console.log(res.data);
+        setData(res.data);
+      });
   }, []);
 
   const _renderItem = ({item}) => {
@@ -87,7 +71,16 @@ export default function Player({navigation, route}) {
               height: 80,
               borderRadius: 40,
               backgroundColor: colors.border,
-            }}></View>
+              overflow: 'hidden',
+            }}>
+            <Image
+              source={{uri: item.foto}}
+              style={{
+                aspectRatio: 1,
+                resizeMode: 'contain',
+              }}
+            />
+          </View>
           <View style={{paddingLeft: 10, flex: 1}}>
             <Text
               style={{
