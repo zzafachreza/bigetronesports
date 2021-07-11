@@ -127,7 +127,7 @@ export default function MyResults() {
               left: 10,
               fontSize: 20,
             }}>
-            TURNAMENT RESULTS
+            TOURNAMENT RESULTS
           </Text>
           <Image
             source={require('../../assets/logo.png')}

@@ -60,7 +60,7 @@ export default function Splash({navigation}) {
           paddingBottom: windowHeight / 4,
         }}>
         <Animated.Image
-          source={require('../..//assets/logo.png')}
+          source={require('../../assets/logo.png')}
           style={{
             resizeMode: 'contain',
             width: 150,

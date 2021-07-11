@@ -13,15 +13,9 @@ import Search2 from './Search2';
 import Kategori from './Kategori';
 import ListData from './ListData';
 import Notifikasi from './Notifikasi';
-import Barang from './Barang';
-import Cart from './Cart';
-import Checkout from './Checkout';
-import Bayar from './Bayar';
-import Bayar2 from './Bayar2';
 import Pemakaian from './Pemakaian';
 import PemakaianTambah from './PemakaianTambah';
 import BarangPemakaian from './BarangPemakaian';
-import Akses from './Akses';
 import Laporan from './Laporan';
 import Schedule from './Schedule';
 import Results from './Results';
@@ -48,15 +42,9 @@ export {
   Kategori,
   ListData,
   Notifikasi,
-  Barang,
-  Cart,
-  Checkout,
   Pemakaian,
   PemakaianTambah,
-  Bayar,
-  Bayar2,
   BarangPemakaian,
-  Akses,
   Laporan,
   Schedule,
   Results,

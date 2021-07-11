@@ -44,11 +44,6 @@ export default function MySchedule() {
       image: require('../../assets/ff.png'),
       game: 'FREE FIRE',
     },
-    {
-      id: 3,
-      image: require('../../assets/cod.png'),
-      game: 'COD MOBILE',
-    },
   ]);
 
   const renderItem = ({item}) => {

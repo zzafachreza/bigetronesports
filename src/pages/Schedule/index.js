@@ -51,21 +51,21 @@ export default function Schdule({navigation}) {
 
   useEffect(() => {
     getData('user').then(res => {
-      console.log(res);
+      // console.log(res);
       setUser(res);
       getData('token').then(res => {
-        console.log('data token,', res);
+        // console.log('data token,', res);
         setToken(res.token);
       });
     });
-    axios
-      .post('https://zavalabs.com/pembantuku/api/update_token.php', {
-        id_member: user.id,
-        token: token,
-      })
-      .then(res => {
-        console.log('update token', res);
-      });
+    // axios
+    //   .post('https://zavalabs.com/bigetronesports/api/update_token.php', {
+    //     id_member: user.id,
+    //     token: token,
+    //   })
+    //   .then(res => {
+    //     console.log('update token', res);
+    //   });
   }, []);
 
   const windowWidth = Dimensions.get('window').width;

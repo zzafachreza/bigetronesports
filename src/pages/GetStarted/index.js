@@ -24,6 +24,12 @@ export default function GetStarted({navigation}) {
   const bottom = new Animated.Value(windowWidth);
   const opacity = new Animated.Value(0);
   const top = new Animated.Value(0);
+  const scaleLogo = new Animated.Value(0.5);
+
+  Animated.timing(scaleLogo, {
+    toValue: 1,
+    duration: 1000,
+  }).start();
 
   Animated.timing(bottom, {
     toValue: 100,
@@ -52,11 +58,15 @@ export default function GetStarted({navigation}) {
           justifyContent: 'center',
           alignItems: 'center',
         }}>
-        <LottieView
-          style={{flex: 1}}
-          source={require('../../assets/getstarted.json')}
-          autoPlay
-          loop={true}
+        <Animated.Image
+          source={require('../../assets/logo.png')}
+          style={{
+            resizeMode: 'contain',
+            width: 150,
+            height: 150,
+            aspectRatio: scaleLogo,
+            marginBottom: 120,
+          }}
         />
       </View>
 
@@ -73,6 +83,7 @@ export default function GetStarted({navigation}) {
       <MyButton
         title="SIGN UP"
         Icons="book"
+        borderSize={1}
         warna={colors.white}
         iconColor={colors.primary}
         colorText={colors.primary}
@@ -86,7 +97,7 @@ export default function GetStarted({navigation}) {
 
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.white,
     flex: 1,
     padding: 20,
   },
