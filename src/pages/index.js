@@ -13,15 +13,11 @@ import Search2 from './Search2';
 import Kategori from './Kategori';
 import ListData from './ListData';
 import Notifikasi from './Notifikasi';
-import Pemakaian from './Pemakaian';
-import PemakaianTambah from './PemakaianTambah';
-import BarangPemakaian from './BarangPemakaian';
 import Laporan from './Laporan';
 import Schedule from './Schedule';
 import Results from './Results';
 import ScheduleDetail from './ScheduleDetail';
 import ResultsDetail from './ResultsDetail';
-
 import Artikel from './Artikel';
 import Player from './Player';
 import PlayerDetail from './PlayerDetail';
@@ -42,9 +38,6 @@ export {
   Kategori,
   ListData,
   Notifikasi,
-  Pemakaian,
-  PemakaianTambah,
-  BarangPemakaian,
   Laporan,
   Schedule,
   Results,

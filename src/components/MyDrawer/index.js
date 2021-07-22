@@ -25,6 +25,7 @@ import {useNavigation} from '@react-navigation/native';
 export default function MyDrawer({closeDrawer}) {
   const navigation = useNavigation();
   const [user, setUser] = useState([]);
+  const [data, setData] = useState([]);
   const [token, setToken] = useState('');
   const windowWidth = Dimensions.get('window').width;
   const windowHeight = Dimensions.get('window').height;
@@ -36,6 +37,12 @@ export default function MyDrawer({closeDrawer}) {
   };
 
   useEffect(() => {
+    axios.get('https://zavalabs.com/bigetronesports/api/game.php').then(res => {
+      console.log(res.data);
+      setData(res.data);
+      // setData(res.data.data);
+    });
+
     getData('user').then(res => {
       console.log(res);
       setUser(res);
@@ -171,62 +178,28 @@ export default function MyDrawer({closeDrawer}) {
           // flex: 1,
           // backgroundColor: 'blue',
         }}>
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Player', {
-              game: 'PUBG MOBILE',
-            })
-          }
-          style={{
-            marginVertical: 5,
-          }}>
-          <Text
-            style={{
-              fontFamily: fonts.secondary[600],
-              fontSize: windowWidth / 28,
-              color: colors.primary,
-            }}>
-            PUBG MOBILE
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Player', {
-              game: 'MOBILE LEGEND BANG-BANG',
-            })
-          }
-          style={{
-            marginVertical: 5,
-          }}>
-          <Text
-            style={{
-              fontFamily: fonts.secondary[600],
-              fontSize: windowWidth / 28,
-              color: colors.primary,
-            }}>
-            MOBILE LEGEND BANG-BANG
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() =>
-            navigation.navigate('Player', {
-              game: 'FREE FIRE',
-            })
-          }
-          style={{
-            marginVertical: 5,
-          }}>
-          <Text
-            style={{
-              fontFamily: fonts.secondary[600],
-              fontSize: windowWidth / 28,
-              color: colors.primary,
-            }}>
-            FREE FIRE
-          </Text>
-        </TouchableOpacity>
+        {data.map(item => {
+          return (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('Player', {
+                  game: item.game,
+                })
+              }
+              style={{
+                marginVertical: 5,
+              }}>
+              <Text
+                style={{
+                  fontFamily: fonts.secondary[600],
+                  fontSize: windowWidth / 28,
+                  color: colors.primary,
+                }}>
+                {item.game}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
       </View>
       <TouchableOpacity
         onPress={() => navigation.replace('MainApp')}
@@ -262,7 +235,7 @@ export default function MyDrawer({closeDrawer}) {
       </TouchableOpacity>
       <View
         style={{
-          flex: 1,
+          // flex: 1,
           flexDirection: 'row',
           justifyContent: 'space-around',
         }}>
@@ -271,7 +244,7 @@ export default function MyDrawer({closeDrawer}) {
             Linking.openURL('https://www.facebook.com/bigetronesports')
           }>
           <Icon
-            size={50}
+            size={40}
             type="ionicon"
             name="logo-facebook"
             color={colors.primary}
@@ -282,7 +255,7 @@ export default function MyDrawer({closeDrawer}) {
             Linking.openURL('https://www.instagram.com/bigetronesports/')
           }>
           <Icon
-            size={50}
+            size={40}
             type="ionicon"
             name="logo-instagram"
             color={colors.primary}
@@ -295,13 +268,40 @@ export default function MyDrawer({closeDrawer}) {
             )
           }>
           <Icon
-            size={50}
+            size={40}
             type="ionicon"
             name="logo-youtube"
             color={colors.primary}
           />
         </TouchableOpacity>
       </View>
+      <ScrollView
+        horizontal
+        style={{
+          flex: 1,
+        }}>
+        {data.map(item => {
+          return (
+            <TouchableOpacity
+              onPress={() => Linking.openURL(item.link)}
+              style={{
+                marginTop: -50,
+                marginHorizontal: 10,
+                borderRadius: 10,
+                overflow: 'hidden',
+              }}>
+              <Image
+                resizeMode="contain"
+                source={{
+                  uri: item.foto,
+                }}
+                style={{width: 200, aspectRatio: 1}}
+              />
+            </TouchableOpacity>
+          );
+        })}
+      </ScrollView>
+
       <MyButton title="LOGOUT" warna={colors.primary} onPress={handleLogout} />
     </View>
   );
